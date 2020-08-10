@@ -9,15 +9,16 @@ const { animals } = require('./data/animals');
 
 
 function filterByQuery(query, animalsArray) {
+    console.log(query);
     let personalityTraitsArray = [];
     let filteredResults = animalsArray;
-    if (query.personalityTraits) {
+    if (query.personality_traits) {
         // Save personalityTraits as a dedicated array.
         // If personalityTraits is a string, place it into a new array and save.
-        if (typeof query.personalityTraits === 'string') {
-            personalityTraitsArray = [query.personalityTraits];
+        if (typeof query.personality_traits === 'string') {
+            personalityTraitsArray = [query.personality_traits];
         } else {
-            personalityTraitsArray = query.personalityTraits;
+            personalityTraitsArray = query.personality_traits;
         }
         // Loop through each trait in the personalityTraits array:
         personalityTraitsArray.forEach(trait => {
@@ -29,7 +30,7 @@ function filterByQuery(query, animalsArray) {
         // so at the end we'll have an array of animals that have every one 
         // of the traits when the .forEach() loop is finished.
             filteredResults = filteredResults.filter(
-                animal => animal.personalityTraits.indexOf(train) !== -1
+                animal => animal.personalityTraits.indexOf(trait) !== -1
             );
         });
     }
@@ -45,6 +46,7 @@ function filterByQuery(query, animalsArray) {
         filteredResults = filteredResults.filter(animal => animal.name === query.name);
     }
     return filteredResults;
+    
 }
 
 app.get('/api/animals', (req, res) => {
