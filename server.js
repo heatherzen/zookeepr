@@ -88,6 +88,8 @@ function validateAnimal(animal) {
     return true;
 }
 
+
+
 app.get('/api/animals', (req, res) => {
     let results = animals;
     if (req.query) {
@@ -119,6 +121,8 @@ app.post('/api/animals', (req, res) => {
     res.json(animal);
 });
 
+
+
 app.get('/zookeepers', (req, res) => {
     res.sendFile(path.join(__dirname, './public/zookeepers.html'));
 });
@@ -130,6 +134,8 @@ app.get('/', (req, res) => {
 app.get('/animals', (req, res) => {
     res.sendFile(path.join(__dirname, './public/animals.html'));
 });
+
+
 
 
 
